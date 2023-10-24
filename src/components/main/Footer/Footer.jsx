@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import Logo from './logo/Logo';
+import Logo from '../../Logo/Logo';
 import LocationIcon from '@/components/Icons/LocationIcon';
 import PhoneIcon from '@/components/Icons/PhoneIcon';
 import EmailIcon from '@/components/Icons/EmailIcon';
@@ -34,7 +34,7 @@ const Footer = () => {
               </ul>
               <div className={styles.footerLinksRules}>
                 <a href="#" target="_blank">Офіційна інформація</a>
-                <a href="#" target="_blank">Політика конфідеційності</a>
+                <a href="#" target="_blank">Політика конфіденційності</a>
                 <a href="#" target="_blank">Правила користування сайтом</a>
               </div>
               <DownloadButton

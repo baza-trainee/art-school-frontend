@@ -1,14 +1,20 @@
 .logoWrapper {
-  @extend%aligncenter;
-  gap: 10px;
-  height: 94px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  a {
-    padding-left: 10px;
-  }
+.logoTextWrap { 
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: 210px;
 }
 
 .logoText {
-  width: 218px;
-  @include font(16px, 700, 1.25);
+  font-size: 15px;
+}
+
+.logoTextTwo {
+  font-size: 13px;
 }
