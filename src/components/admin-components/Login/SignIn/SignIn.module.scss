@@ -1,0 +1,25 @@
+.emailStyle {
+  display: flex;
+  width: 478px;
+  height: 45px;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 6px;
+  border: 1px solid var(--admin-input-outline, #D5D9F2);
+  background: var(--admin-white, #FFF);
+}
+
+.passwordStyle {
+  display: flex;
+  width: 478px;
+  height: 45px;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 6px;
+  border: 1px solid var(--admin-input-outline, #D5D9F2);
+  background: var(--admin-white, #FFF);
+}
