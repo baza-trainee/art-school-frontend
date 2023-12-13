@@ -13,7 +13,10 @@ import Cooperation from './pages/main/cooperation/Cooperation';
 import StatementPage from './pages/main/statement/StatementPage';
 
 /* login */
-import LoginLayout from './components/admin-components/Login/LoginLayout/LoginLayout';
+import SignInPageAdmin from './pages/admin-pages/LoginAdmin/SignInAdmin/SignInPageAdmin';
+import PasswordRecoveryPageAdmin from './pages/admin-pages/LoginAdmin/PasswordRecoveryAdmin/PasswordRecoveryPageAdmin';
+import CompletePasswordRecoveryPageAdmin from './pages/admin-pages/LoginAdmin/CompletePasswordRecoveryAdmin/CompletePasswordRecoveryPageAdmin';
+import SuccessPageAdmin from './pages/admin-pages/LoginAdmin/SuccessAdmin/SuccessPageAdmin';
 
 /* departments */
 import PreschoolDepartment from './pages/main/departments/PreschoolDepartment';
@@ -86,7 +89,15 @@ const App = () => {
         </Route>
 
         {/* login */}
-        <Route path="/login" element={<LoginLayout />}></Route>
+        <Route path="/login" element={<SignInPageAdmin />}>
+          <Route path="send-email" element={<PasswordRecoveryPageAdmin />} />
+          <Route
+            path="password-recovery/:token"
+            element={<CompletePasswordRecoveryPageAdmin />}
+          />
+          <Route path="password-success" element={<SuccessPageAdmin />} />
+          <Route path="*" element={<Page404 />} />
+        </Route>
 
         {/* admin */}
         <Route path="/admin" element={<AdminSharedLayout />}>

@@ -1,7 +1,5 @@
 const OurAchievementsPage = () => {
-  return (
-    <div>OurAchievementsPage</div>
-  );
+  return <div>OurAchievementsPage</div>;
 };
 
 export default OurAchievementsPage;
