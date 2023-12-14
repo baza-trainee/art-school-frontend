@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import BasicContainerLogin from '../BasicContainerLogin/BasicContainerLogin';
 import Heading from '../Heading/Heading';
 import ButtonSubmit from '../../Buttons/SubmitButton/ButtonSubmit.jsx';
@@ -10,10 +11,12 @@ const SignIn = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = data => {
     console.log(data);
+    reset();
   };
 
   // const handleClick = () => {
@@ -53,25 +56,40 @@ const SignIn = () => {
             className={styles.passwordStyle}
             {...register('password', {
               required: true,
-              minLength: 6,
+              // minLength: 6,
+              validate: {
+                checkLength: value => value.length >= 6,
+                // matchPattern: value =>
+                //   /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(
+                //     value
+                //   ),
+              },
             })}
           />
-          {errors.password && errors.password.type === 'required' && (
+          {errors.password?.type === 'required' && (
             <p className="errorMsg">Поле не може бути пустим</p>
           )}
-          {/* {errors.password && errors.password.type === 'minLength' && (
+          {errors.password?.type === 'checkLength' && (
             <p className="errorMsg">
-              Password should be at-least 6 characters.
+              Пароль повинен містити мінімум 6 символів
+            </p>
+          )}
+          {/* {errors.password?.type === 'matchPattern' && (
+            <p className="errorMsg">
+              Пароль повинен містити принаймні одну велику літеру, малу літеру,
+              цифру та спеціальний символ
             </p>
           )} */}
         </div>
 
         <ButtonSubmit
           // handlerSubmitButton={handleClick}
+          type="submit"
           nameButton="Увійти"
           isActive={true}
         />
       </form>
+      <Link to="/login/send-email">Забули пароль?</Link>
     </BasicContainerLogin>
   );
 };
