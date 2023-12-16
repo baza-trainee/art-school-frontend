@@ -1,4 +1,4 @@
-.emailStyle {
+.formStyle {
   display: flex;
   width: 478px;
   height: 45px;
@@ -7,19 +7,41 @@
   gap: 10px;
 
   border-radius: 6px;
-  border: 1px solid var(--admin-input-outline, #D5D9F2);
-  background: var(--admin-white, #FFF);
+  border: 1px solid  #D5D9F2;
+  background:  #FFF;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.passwordStyle {
-  display: flex;
-  width: 478px;
-  height: 45px;
-  padding: 10px;
-  align-items: center;
-  gap: 10px;
-
-  border-radius: 6px;
-  border: 1px solid var(--admin-input-outline, #D5D9F2);
-  background: var(--admin-white, #FFF);
+.labelStyle {
+  color: #152340;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
+
+.invalid {
+  border: 2px solid red;
+}
+
+.valid {
+  border: 2px solid green;
+}
+
+.errorMsg {
+  color:  #FF3232;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom:26px;
+}
+
+.btnSubmit {
+margin-left: 103px;
+}
+
+

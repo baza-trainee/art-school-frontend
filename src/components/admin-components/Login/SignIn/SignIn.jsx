@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import BasicContainerLogin from '../BasicContainerLogin/BasicContainerLogin';
@@ -10,83 +9,70 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     reset,
-  } = useForm();
+  } = useForm({
+    mode: 'onChange',
+  });
 
   const onSubmit = data => {
     console.log(data);
     reset();
   };
 
-  // const handleClick = () => {
-  //   console.log('Увійти');
-  // };
-
   return (
     <BasicContainerLogin>
       <Heading title="Увійти в акаунт" />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label>Електронна пошта*</label>
+          <label className={styles.labelStyle}>Електронна пошта*</label>
           <input
             name="email"
             type="text"
-            // ref={register}
             placeholder="name@company.com"
-            className={styles.emailStyle}
+            className={`${styles.formStyle} ${
+              errors.email ? styles.invalid : styles.valid
+            }`}
             {...register('email', {
               required: 'Поле не може бути пустим',
               pattern: {
-                value:
-                  /^ [a - zA - Z0 - 9] + @(?: [a - zA - Z0 - 9] +\.)+[A-Za-z]+$/,
+                value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
                 message: 'Введіть email user@mail.com',
               },
             })}
           />
-          {errors.email && <p className="errorMsg">{errors.email.message}</p>}
+          {errors.email && (
+            <p className={styles.errorMsg}>{errors.email.message}</p>
+          )}
         </div>
         <div>
-          <label>Пароль*</label>
+          <label className={styles.labelStyle}>Пароль*</label>
           <input
             name="password"
             type="password"
-            // ref={register}
             placeholder="Введіть 6 символів і більше"
-            className={styles.passwordStyle}
+            className={`${styles.formStyle} ${
+              errors.password ? styles.invalid : styles.valid
+            }`}
             {...register('password', {
-              required: true,
-              // minLength: 6,
+              required: 'Поле не може бути пустим',
               validate: {
                 checkLength: value => value.length >= 6,
-                // matchPattern: value =>
-                //   /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)(?=.*[!@#$*])/.test(
-                //     value
-                //   ),
               },
             })}
           />
-          {errors.password?.type === 'required' && (
-            <p className="errorMsg">Поле не може бути пустим</p>
-          )}
-          {errors.password?.type === 'checkLength' && (
-            <p className="errorMsg">
-              Пароль повинен містити мінімум 6 символів
+          {errors.password && (
+            <p className={styles.errorMsg}>
+              {errors.password.message ||
+                'Невірно введений пароль або електронна пошта'}
             </p>
           )}
-          {/* {errors.password?.type === 'matchPattern' && (
-            <p className="errorMsg">
-              Пароль повинен містити принаймні одну велику літеру, малу літеру,
-              цифру та спеціальний символ
-            </p>
-          )} */}
         </div>
-
         <ButtonSubmit
-          // handlerSubmitButton={handleClick}
           type="submit"
           nameButton="Увійти"
-          isActive={true}
+          isActive={isDirty && isValid}
+          className={styles.btnSubmit}
         />
       </form>
       <Link to="/login/send-email">Забули пароль?</Link>
