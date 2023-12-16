@@ -17,7 +17,6 @@ function isValidFileType(fileType) {
 
 export const posterValidation = Yup.object().shape({
   title: Yup.string()
-    .required('Введіть назву новини')
     .min(2)
     .max(120)
     .matches(

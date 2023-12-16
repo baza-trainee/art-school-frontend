@@ -1,15 +1,14 @@
 import { Formik, Form, Field } from 'formik';
-
+import usePostersStore from '@/store/posterStore';
+import { posterValidation } from './validationSchema';
 import PageTitle from '@/components/admin-components/PageTitle/PageTitle';
 import ButtonSubmit from '@/components/admin-components/Buttons/SubmitButton/ButtonSubmit';
-
 import TextArea from '@/components/admin-components/formik/TextArea/TextArea';
 import FileInput from '@/components/admin-components/formik/FileInput/FileInput';
+import BreadCrumbs from '@/components/admin-components/BreadCrumbs/BreadCrumbs';
 import styles from './PostersAdmin.module.scss';
-import usePostersStore from '@/store/posterStore';
-import AdminHome from '@/components/Icons/AdminHome';
-import AdminArrow from '@/components/Icons/AdminArrow';
-import { posterValidation } from './validationSchema';
+
+const breadcrumbs = ['Афіші', 'Додати афішу'];
 
 const initialValues = {
   title: ' ',
@@ -30,13 +29,7 @@ const AddPostersPage = () => {
 
   return (
     <div>
-      <div className={styles.header}>
-        <AdminHome />
-        <AdminArrow />
-        <span>Афіші</span>
-        <AdminArrow />
-        <span>Додати афішу</span>
-      </div>
+      <BreadCrumbs breadcrumbs={breadcrumbs} />
       <PageTitle
         title="Додати Афішу"
         showBackButton={true}
