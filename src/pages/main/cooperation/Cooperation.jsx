@@ -81,7 +81,7 @@ const Cooperation = () => {
               )}
             </div>
             <div className={styles.imagegWrapper}>
-              <h2>Студія звукозапису</h2>
+              <h1>Студія звукозапису</h1>
               {(isMobile || isLaptop) && (
                 <div className={styles.images}>
                   {data.soundRecordImages.map((image, index) => (
@@ -110,7 +110,7 @@ const Cooperation = () => {
               )}
             </div>
             <div className={styles.imagegWrapper}>
-              <h2>Виставкова зала</h2>
+              <h1>Виставкова зала</h1>
 
               {(isMobile || isLaptop) && (
                 <div className={styles.images}>
@@ -140,7 +140,7 @@ const Cooperation = () => {
               )}
             </div>
             <div className={styles.contactsWrapper}>
-              <h2>За детальною інформацією звертайтесь:</h2>
+              <h1>За детальною інформацією звертайтесь:</h1>
               <ul className={styles.contacts}>
                 <li>
                   <a
